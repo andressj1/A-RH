@@ -33,9 +33,12 @@ def vovsenc(df, x_col, y_col, color_col):
 
 #### Grafico para categoricas; str
 
-def vovscs(df, x_col, y_col, color_col):
+def vovsstr(df, x_col, y_col, color_col):
     # Calcular el conteo de valores
     counts = df.groupby([x_col, color_col]).size().reset_index(name=y_col)
+    
+    # Ordenar los datos para que la categoría con menos valores aparezca al final
+    counts = counts.sort_values(by=y_col)
     
     # Crear el gráfico de barras
     fig = px.bar(counts, x=y_col, y=x_col, color=color_col, 

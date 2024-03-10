@@ -26,7 +26,7 @@ def vovsenc(df, x_col, y_col, color_col, title):
     
     # Crear el gráfico de barras
     fig = px.bar(counts, x=x_col, y=y_col, color=color_col, 
-                 title=title,
+                 title=f'Distribución de {y_col} por {x_col}',
                  labels={'Category': 'Categoría', 'Count': 'Cantidad de Empleados', 'Attrition': 'Attrition'})
     fig.update_xaxes(tickvals=[1, 2, 3, 4, 5, 6])
     return fig

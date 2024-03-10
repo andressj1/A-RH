@@ -33,7 +33,7 @@ def vovsenc(df, x_col, y_col, color_col):
 
 #### Grafico para categoricas; str
 
-def vovsenc(df, x_col, y_col, color_col):
+def vovscs(df, x_col, y_col, color_col):
     # Calcular el conteo de valores
     counts = df.groupby([x_col, color_col]).size().reset_index(name=y_col)
     

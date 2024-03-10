@@ -7,15 +7,19 @@ from sklearn.model_selection import cross_val_predict, cross_val_score, cross_va
 import joblib
 from sklearn.preprocessing import StandardScaler 
 import plotly.express as px
+import matplotlib.pyplot as plt  # gráficos
 
 
-#######Grafico de torta 
+def plot_attrition_counts(df, colors=['blue', 'orange']):
+    attrition_counts = df['Attrition'].value_counts()
 
-def plot_pie_chart(data, values_col, names_col):
-    fig = px.pie(data, values=values_col, names=names_col)
-    fig.show()
+    # Crear el gráfico de barras horizontal
+    plt.figure(figsize=(7, 3))
+    attrition_counts.plot(kind='barh', color=colors)
+    plt.xlabel('Cantidad de empleados')
+    plt.ylabel('Continuidad')
+    plt.title('Comportamiento')
 
-#####Grafico de barras; bivariado 
-def plot_bar_chart(df, x_col, y_col, color_col, barmode):
-    fig = px.bar(df, x=x_col, y=y_col, color=color_col, barmode=barmode)
-    fig.show()
+    # Mostrar el gráfico centrado en la pantalla
+    plt.tight_layout()
+    plt.show()

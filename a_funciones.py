@@ -20,7 +20,7 @@ def vovsnum(df, x_col, y_col):
 
 ##### Grafico para categoricas; encuestas
 
-def vovsenc(df, x_col, y_col, color_col, title):
+def vovsenc(df, x_col, y_col, color_col):
     # Calcular el conteo de valores
     counts = df.groupby([x_col, color_col]).size().reset_index(name=y_col)
     

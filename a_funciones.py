@@ -10,16 +10,10 @@ import plotly.express as px
 import matplotlib.pyplot as plt  # gráficos
 
 
-def plot_attrition_counts(df, colors=['blue', 'orange']):
-    attrition_counts = df['Attrition'].value_counts()
 
-    # Crear el gráfico de barras horizontal
-    plt.figure(figsize=(7, 3))
-    attrition_counts.plot(kind='barh', color=colors)
-    plt.xlabel('Cantidad de empleados')
-    plt.ylabel('Continuidad')
-    plt.title('Comportamiento')
-
-    # Mostrar el gráfico centrado en la pantalla
-    plt.tight_layout()
-    plt.show()
+def vovsnum(df, x_col, y_col):
+    fig = px.box(df, x=x_col, y=y_col, 
+                 title=f'Distribución de {y_col} por {x_col}',
+                 points='outliers',
+                 labels={x_col: x_col, y_col: y_col})
+    return fig

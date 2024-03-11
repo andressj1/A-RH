@@ -51,6 +51,7 @@ def vovsstr(df, x_col, y_col, color_col):
 
 
 ##### Seleccion de variables 
+
 def sel_variables(modelos, X, y, threshold):
     var_names_ac = np.array([])
     for modelo in modelos:
@@ -58,6 +59,7 @@ def sel_variables(modelos, X, y, threshold):
         sel = SelectFromModel(modelo, threshold=threshold, prefit=True)
         var_names = X.columns[sel.get_support()]
         var_names_ac = np.append(var_names_ac, var_names)
-        var_names_ac = np.unique(var_names_ac)
+    
+    var_names_ac = np.unique(var_names_ac)  # Movido fuera del bucle para conservar todas las variables seleccionadas
     
     return var_names_ac

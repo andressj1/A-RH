@@ -63,3 +63,16 @@ def sel_variables(modelos, X, y, threshold):
     var_names_ac = np.unique(var_names_ac)  # Movido fuera del bucle para conservar todas las variables seleccionadas
     
     return var_names_ac
+
+###### Medir modelos 
+
+def medir_modelos(modelos,scoring,X,y,cv):
+
+    metric_modelos=pd.DataFrame()
+    for modelo in modelos:
+        scores=cross_val_score(modelo,X,y, scoring=scoring, cv=cv )
+        pdscores=pd.DataFrame(scores)
+        metric_modelos=pd.concat([metric_modelos,pdscores],axis=1)
+    
+    metric_modelos.columns=["LogisticRegression","RandomForestClassifier","DecisionTreeClassifier"]
+    return metric_modelos

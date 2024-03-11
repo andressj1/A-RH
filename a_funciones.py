@@ -49,6 +49,34 @@ def vovsstr(df, x_col, y_col, color_col):
                  color_discrete_map={'rf': 'red', 'rg': 'green', 'rh': 'blue'})  # Cambiar los colores aquí
     return fig
 
+####Imputar 
+
+def imputar_f (df,list_cat):  
+        
+    
+    df_c=df[list_cat]
+
+    df_n=df.loc[:,~df.columns.isin(list_cat)]
+
+    imputer_n=SimpleImputer(strategy='median')
+    imputer_c=SimpleImputer( strategy='most_frequent')
+
+    imputer_n.fit(df_n)
+    imputer_c.fit(df_c)
+    imputer_c.get_params()
+    imputer_n.get_params()
+
+    X_n=imputer_n.transform(df_n)
+    X_c=imputer_c.transform(df_c)
+
+
+    df_n=pd.DataFrame(X_n,columns=df_n.columns)
+    df_c=pd.DataFrame(X_c,columns=df_c.columns)
+    df_c.info()
+    df_n.info()
+
+    df =pd.concat([df_n,df_c],axis=1)
+    return df
 
 ##### Seleccion de variables 
 
@@ -76,3 +104,4 @@ def medir_modelos(modelos,scoring,X,y,cv):
     
     metric_modelos.columns=["LogisticRegression","RandomForestClassifier","DecisionTreeClassifier"]
     return metric_modelos
+

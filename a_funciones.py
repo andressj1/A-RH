@@ -108,17 +108,4 @@ def medir_modelos(modelos,scoring,X,y,cv):
     return metric_modelos
 
 
-##### Matriz de confusion 
-
-def plot_confusion_matrix(y_true, y_pred):
-    # Crear la matriz de confusión
-    conf_matrix = confusion_matrix(y_true, y_pred)
-
-    # Crear un mapa de calor con seaborn
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False)
-    plt.xlabel('Predicted labels')
-    plt.ylabel('True labels')
-    plt.title('Confusion Matrix')
-    plt.show()
 

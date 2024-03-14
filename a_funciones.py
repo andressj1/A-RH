@@ -116,3 +116,16 @@ def eliminar_columnas(df):
     columns_to_drop = ['año_x', 'año_y', 'año', 'EmployeeID', 'YearsWithCurrManager', 'TotalWorkingYears', 'YearsSinceLastPromotion']
     df = df.drop(columns=columns_to_drop, errors='ignore')
     return df
+
+#######Floats a int
+def convertir_columnas_float_a_entero(df):
+    # Seleccionar solo las columnas existentes en el DataFrame
+    columnas_a_convertir = ['EnvironmentSatisfaction', 'JobSatisfaction', 'WorkLifeBalance', 'NumCompaniesWorked']
+    columnas_existente = [col for col in columnas_a_convertir if col in df.columns]
+    
+    # Convertir las columnas float a int
+    for columna in columnas_existente:
+        df[columna] = df[columna].astype(int)
+        
+    return df
+

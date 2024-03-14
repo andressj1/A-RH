@@ -127,17 +127,13 @@ def convertir(df):
 
 ##### eliminar columnas 
 def eliminars(df):
-    columns_to_drop = ['año_x', 'año_y', 'año', 'EmployeeID', 'YearsWithCurrManager', 'TotalWorkingYears', 'YearsSinceLastPromotion']
+    columns_to_drop = ['año_x', 'año_y', 'año', 'YearsWithCurrManager', 'TotalWorkingYears', 'YearsSinceLastPromotion']
     df = df.drop(columns=columns_to_drop, errors='ignore')
     return df
         
 
 #######Cargar y procesar nuevos datos ######
 def preparar_datos (df):
-   
-    
-
-  
    
     
     #### Cargar modelo y listas 
